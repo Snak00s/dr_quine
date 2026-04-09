@@ -1,42 +1,13 @@
-#include<unistd.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<fcntl.h>
-#include<stdlib.h>
-#include<strings.h>
+#include<stdio.h>
 
-int buff_size = 100;
-char buff[101];
-int fd;
-int out;
-int rv;
+#define replica "#include<stdio.h>%1$c%1$c#define replica %3$c%5$s%3$c%1$c%1$c#define print(str) printf(str, 10, 9, 34, 92, str);%1$c%1$c#define start(str) %4$c%1$c%2$cint main(void){%4$c%1$c%2$c%2$cprint(str);%4$c%1$c%2$c%2$creturn (0);%4$c%1$c%2$c}%1$c%1$cstart(replica);"
 
-//comment blabla
+#define print(str) printf(str, 10, 9, 34, 92, str);
 
-#define loop(buff,fd,out,rv) \
-	while (rv) {\
-		if (rv == -1) {\
-			break;\
-		}\
-		write(out, buff, rv);\
-		rv = read(fd, buff, buff_size);\
+#define start(str) \
+	int main(void){\
+		print(str);\
+		return (0);\
 	}
 
-#define end(fd, out) \
-	close(fd);\
-	close(out);\
-	return (0); }
-
-#define start(buff,fd,out,rv) \
-	int main() {\
-		fd = open("Grace.c", O_RDONLY );\
-		if (fd == -1) {\
-			write(1, "File error\n", 12);\
-			return(0);\
-		}\
-		out = open("Grace_kid.c",  O_CREAT | O_TRUNC | O_WRONLY, 0664); \
-		rv = read(fd, buff, buff_size); \
-		loop(buff, fd, out, rv); \
-		end(fd, out);
-
-start(buff, fd, out, rv);
+start(replica);

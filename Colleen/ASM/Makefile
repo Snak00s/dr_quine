@@ -2,16 +2,11 @@ NAME = Colleen
 
 NASM = nasm -f elf64
 
+GCC = gcc
+
 SRC = Colleen.s
+
 OBJ = $(SRC:%.s=%.o)
-
-# -----------------------------------------
-
-EXEC = test
-
-GCC = gcc -no-pie
-
-CSRCS = main.c
 
 all: $(NAME)
 

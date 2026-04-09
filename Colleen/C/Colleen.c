@@ -1,31 +1,18 @@
-#include<unistd.h>
-#include<sys/types.h>
-#include<sys/stat.h>
-#include<fcntl.h>
-#include<stdlib.h>
-#include<strings.h>
+#include<stdio.h>
 
-//comment outside the program
+// yo
+
+char *getReplica(void)
+{
+	return ("#include<stdio.h>%1$c%1$c// yo%1$c%1$cchar *getReplica(void)%1$c{%1$c%3$creturn (%2$c%4$s%2$c);%1$c}%1$c%1$cint main(void)%1$c{%1$c%1$c%3$c//issou%1$c%1$c%3$cchar *replica = getReplica();%1$c%3$cprintf(replica, 10, 34, 9, replica);%1$c%3$creturn (0);%1$c}");
+}
 
 int main(void)
 {
-	char buff[101];
-	//comment inside the program
-	int fd = open("Colleen.c", O_RDONLY);
-	if (fd == -1)
-	{
-		write(1, "File error\n", 12);
-		return (0);
-	}
-	bzero(buff, 101);
-	int rv = read(fd, buff, 100);
-	while (rv)
-	{
-		if (rv == -1)
-			break;
-		write(1, buff, rv);
-		rv = read(fd, buff, 100);
-	}
-	close(fd);
+
+	//issou
+
+	char *replica = getReplica();
+	printf(replica, 10, 34, 9, replica);
 	return (0);
 }
