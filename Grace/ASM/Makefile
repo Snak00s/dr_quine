@@ -1,10 +1,10 @@
-NAME = Colleen
+NAME = Grace
 
 NASM = nasm -f elf64
 
 GCC = gcc -no-pie
 
-SRC = Colleen.s
+SRC = Grace.s
 
 OBJ = $(SRC:%.s=%.o)
 
