@@ -4,6 +4,12 @@ CC = cc -Wall -Werror -Wextra
 
 SRC = Sully.c
 
+#use of wildcards idk if legals
+
+NAME_RES = Sully_*
+
+#------------------------------
+
 OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)
@@ -18,6 +24,7 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
+	rm -f $(NAME_RES)
 	rm -f $(NAME)
 
 re: fclean all

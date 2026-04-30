@@ -6,6 +6,8 @@ GCC = gcc -no-pie
 
 SRC = Sully.s
 
+NAME_RES = Sully_*
+
 OBJ = $(SRC:%.s=%.o)
 
 all: $(NAME)
@@ -20,6 +22,7 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
+	rm -f $(NAME_RES)
 	rm -f $(NAME)
 
 re: fclean all
